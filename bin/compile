@@ -123,7 +123,8 @@ if [ "$GIT_SSH_KEY" != "" ]; then
   # from config as well, but then we'd have to setup expect or some other
   # terminal automation tool to feed it into ssh-add.
   ssh-add id_rsa
-  rm id_rsa
+  mkdir -p ~/.ssh
+  mv id_rsa ~/.ssh/
   # Add github to the list of known hosts - ignore the warning or else set -e will abort the deployment
   ssh -oStrictHostKeyChecking=no -T git@github.com || true
 fi
